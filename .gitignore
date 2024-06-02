@@ -1,0 +1,35 @@
+# Node.js and npm files
+node_modules/
+package-lock.json
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+
+# OS and system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Log files
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build and dist files
+build/
+dist/
+
+# Config files (customize to your needs)
+config.json
+.env
+
+# Other files and directories (customize to your needs)
+coverage/
+reports/
+test-results/
