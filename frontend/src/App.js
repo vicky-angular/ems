@@ -1,7 +1,6 @@
 import {React} from "react";
 import {EmployeeFrom} from "./EmployeCreate/EmployeeForm";
 import {EmployeeTable} from "./EmployeeTable/EmployeeTable";
-import {EmployeeDirectory} from "./EmployeeDirectory/EmployeeDirectory";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 

@@ -4,6 +4,9 @@ import './EmployeeTable.css';
 
 const EmployeeTable = () => {
   const [employees, setEmployees] = useState([]);
+  const [searchTitle, setSearchTitle] = useState('');
+  const [searchAge, setSearchAge] = useState('');
+  const [searchDepartment, setSearchDepartment] = useState('');
 
   useEffect(() => {
     fetchEmployees();
@@ -18,19 +21,52 @@ const EmployeeTable = () => {
     }
   };
 
-//   const handleDelete = async (id) => {
-//     try {
-//       await axios.delete(`http://localhost:5000/users/${id}`);
-//       fetchEmployees();
-//     } catch (error) {
-//       console.error('Error deleting employee:', error);
-//     }
-//   };
+  const handleSearchTitleChange = (e) => {
+    setSearchTitle(e.target.value);
+  };
+
+  const handleSearchAgeChange = (e) => {
+    setSearchAge(e.target.value);
+  };
+
+  const handleSearchDepartmentChange = (e) => {
+    setSearchDepartment(e.target.value);
+  };
+
+  const filteredEmployees = employees.filter((employee) => {
+    return (
+      (!searchTitle || employee.title.toLowerCase().includes(searchTitle.toLowerCase())) &&
+      (!searchAge || employee.age.toString().includes(searchAge)) &&
+      (!searchDepartment || employee.department.toLowerCase().includes(searchDepartment.toLowerCase()))
+    );
+  });
 
   return (
     <div className="employee-list">
-       { console.log("employee list",employees )}
       <h2>Employee List</h2>
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search by title"
+          value={searchTitle}
+          onChange={handleSearchTitleChange}
+        />
+
+        <input
+          type="text"
+          placeholder="Search by age"
+          value={searchAge}
+          onChange={handleSearchAgeChange}
+        />
+
+        <input
+          type="text"
+          placeholder="Search by department"
+          value={searchDepartment}
+          onChange={handleSearchDepartmentChange}
+        />
+
+      </div>
       <table>
         <thead>
           <tr>
@@ -46,7 +82,7 @@ const EmployeeTable = () => {
           </tr>
         </thead>
         <tbody>
-          {employees.map((employee) => (
+          {filteredEmployees.map((employee) => (
             <tr key={employee._id}>
               <td>{employee.firstName}</td>
               <td>{employee.lastName}</td>
@@ -57,10 +93,13 @@ const EmployeeTable = () => {
               <td>{employee.employeeType}</td>
               <td>{employee.currentStatus ? 'Active' : 'Inactive'}</td>
               <td>
-                <button >Delete</button>
+                <button>Delete</button>
               </td>
             </tr>
           ))}
+         {filteredEmployees.length === 0 && <tr>
+              <td colSpan="9" className="no-record">No record found</td>
+            </tr>}
         </tbody>
       </table>
     </div>
