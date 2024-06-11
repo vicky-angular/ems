@@ -36,6 +36,7 @@ const EmployeeFrom = () => {
             employeeType: '',
             currentStatus: false
           });
+          window.location.reload();
         } catch (error) {
           console.error('Error creating employee:', error);
         }
