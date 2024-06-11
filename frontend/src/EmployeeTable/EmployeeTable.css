@@ -1,0 +1,78 @@
+/* General styles for the container */
+.employee-list {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow-x: auto;
+  }
+  
+  .employee-list h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #333;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  /* Table styles */
+  .employee-list table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+  }
+  
+  .employee-list th, .employee-list td {
+    padding: 15px 20px;
+    text-align: left;
+  }
+  
+  .employee-list th {
+    background-color: #f7f7f7;
+    color: #555;
+    font-weight: bold;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  
+  .employee-list td {
+    background-color: #fafafa;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .employee-list tbody tr:hover td {
+    background-color: #f1f1f1;
+  }
+  
+  .employee-list tbody tr:nth-child(even) td {
+    background-color: #fdfdfd;
+  }
+  
+  /* Button styles */
+  .employee-list button {
+    padding: 8px 15px;
+    margin: 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    color: #ffffff;
+  }
+  
+  .employee-list button:hover {
+    background-color: #0056b3;
+  }
+  
+  .employee-list button:focus {
+    outline: none;
+  }
+  
+  .employee-list button.delete-button {
+    background-color: #dc3545;
+  }
+  
