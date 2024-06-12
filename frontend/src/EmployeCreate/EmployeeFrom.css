@@ -19,7 +19,8 @@
   
   .employee-form input[type="text"],
   .employee-form input[type="number"],
-  .employee-form input[type="date"] {
+  .employee-form input[type="date"],
+  .employee-form select {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
