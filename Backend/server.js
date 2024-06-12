@@ -66,8 +66,23 @@ app.get("/", (req, res) => {
 app.get("/users", async (req, res) => {
   try {
     const users = await User.find();
-    console.log('THE FETCH USER--', users)
     res.status(200).send(users);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+
+// DELETE endpoint to delete a user by ID
+app.delete("/users/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    console.log('THE USER ID--', userId)
+    const deletedUser = await User.findByIdAndDelete(userId);
+    if (!deletedUser) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.status(200).send({ message: "User deleted successfully", deletedUser });
   } catch (error) {
     res.status(500).send(error);
   }

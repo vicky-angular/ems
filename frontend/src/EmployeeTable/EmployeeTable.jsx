@@ -21,6 +21,15 @@ const EmployeeTable = () => {
     }
   };
 
+  const deleteEmployee = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/users/${id}`);
+      setEmployees(employees.filter(employee => employee._id !== id));
+    } catch (error) {
+      console.error('Error deleting employee:', error);
+    }
+  };
+
   const handleSearchTitleChange = (e) => {
     setSearchTitle(e.target.value);
   };
@@ -51,21 +60,18 @@ const EmployeeTable = () => {
           value={searchTitle}
           onChange={handleSearchTitleChange}
         />
-
         <input
           type="text"
           placeholder="Search by age"
           value={searchAge}
           onChange={handleSearchAgeChange}
         />
-
         <input
           type="text"
           placeholder="Search by department"
           value={searchDepartment}
           onChange={handleSearchDepartmentChange}
         />
-
       </div>
       <table>
         <thead>
@@ -93,13 +99,15 @@ const EmployeeTable = () => {
               <td>{employee.employeeType}</td>
               <td>{employee.currentStatus ? 'Active' : 'Inactive'}</td>
               <td>
-                <button>Delete</button>
+                <button onClick={() => deleteEmployee(employee._id)}>Delete</button>
               </td>
             </tr>
           ))}
-         {filteredEmployees.length === 0 && <tr>
+          {filteredEmployees.length === 0 && (
+            <tr>
               <td colSpan="9" className="no-record">No record found</td>
-            </tr>}
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
